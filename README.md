@@ -1,5 +1,6 @@
 # trainning_flutter_2023
-
+# https://www.facebook.com/nguyenleduan.index/
+# flutter 3.7 - update 02/02/2023
 TranningFlutter2023
 
 ## Getting Started
