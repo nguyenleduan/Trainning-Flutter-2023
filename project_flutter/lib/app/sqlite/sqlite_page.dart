@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../config/dimens.dart';
 class SQLitePage extends StatefulWidget {
   const SQLitePage({Key? key}) : super(key: key);
 
@@ -13,34 +16,38 @@ class _SQLiteState extends State<SQLitePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        padding: const EdgeInsets.only(top: 30),
+        width: AppDimens.instance.screenFullWidth(context),
+        height: AppDimens.instance.screenFullHeight(context),
+        color: Colors.blueAccent,
         child: Column(
           children: [
-            Row(
-              children: [
-                Container(
-                  child: TextField(
-                    onChanged: (value) {
-
-                      // setState(() {});
-                    },
+            Text("data"),
+            Container(
+              width: AppDimens.instance.screenFullWidth(context),
+              child: Row(
+                children: const [
+                     Expanded(
+                    child: TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Password',
+                      ),
+                    ),
                   ),
-                ),Container(
-                  child: TextField(
-                    onChanged: (value) {
-
-                      // setState(() {});
-                    },
+                  Expanded(
+                    child: TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Password',
+                      ),
+                    ),
                   ),
-                ),
-                Container(
-                  child: TextField(
-                    onChanged: (value) {
 
-                      // setState(() {});
-                    },
-                  ),
-                )
-              ],
+                ],
+              ),
             )
           ],
         ),

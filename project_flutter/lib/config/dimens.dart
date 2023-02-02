@@ -1,10 +1,23 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppDimens {
-  AppDimens._internal();
 
+  AppDimens._();
+
+  static final AppDimens _instance = AppDimens._();
+
+  static AppDimens get instance => _instance;
+
+  double screenFullWidth (BuildContext context){
+    return MediaQuery.of(context).size.width;
+  }
+
+  double screenFullHeight (BuildContext context){
+    return MediaQuery.of(context).size.height;
+  }
   // Iphone 12 Pro Max
   static const Size designSize = Size(428, 926);
 
