@@ -29,15 +29,16 @@ class _SQLiteState extends State<SQLitePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null,
+      appBar: AppBar(
+        title: const Text("SQLite"),
+        backgroundColor: Colors.green,
+      ),
       body: Container(
-        padding: const EdgeInsets.only(top: 50),
         width: AppDimens.instance.screenFullWidth(context),
         height: AppDimens.instance.screenFullHeight(context),
         color: Colors.white60,
         child: Column(
           children: [
-            const Text("Create User"),
             Container(
               padding: const EdgeInsets.all(5),
               child: TextField(

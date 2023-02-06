@@ -1,6 +1,6 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../sqlite/sqlite_page.dart';
 
@@ -13,13 +13,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,21 +30,21 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SQLitePage()),
-                );
+                context.go('/sqlite-page');
               },
               child: Container(
                 padding: const EdgeInsets.all(8),
                 color: Colors.blue[100],
-                child:const Center(child:  Text("SQLite")),
+                child: const Center(child: Text("SQLite")),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[200],
-              child: const Text('Heed not the rabble'),
+            InkWell(
+              onTap: () => context.go('/router-page'),
+              child: Container(
+                color: Colors.yellow[100],
+                padding: const EdgeInsets.all(8),
+                child: const Center(child: Text('Go router')),
+              ),
             ),
             Container(
               padding: const EdgeInsets.all(8),
