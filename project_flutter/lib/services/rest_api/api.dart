@@ -7,14 +7,19 @@ import '../../core/env/app_config.dart';
 import 'dio_logger.dart';
 import 'jwt_interceptor.dart';
 
-abstract class Api {
+class Api {
+  Api._();
+
+  static final Api _instance = Api._();
+
+  static Api get instance => _instance;
+
   Dio get _dio => _initDio();
 
   Dio _initDio() {
     final Dio dio = Dio();
-
     final env = AppConfig.instance.env;
-
+    // https://apiappmo.usexpressglobal.com/api/Login/CheckPhoneActive'
     dio
       ..options.baseUrl = env.baseUrl
       ..options.connectTimeout = env.connectionTimeOut
@@ -59,6 +64,31 @@ abstract class Api {
       );
 
       return ResponseModel.fromMap(response.data);
+    } on Exception {
+      rethrow;
+    }
+  }
+
+  Future<ResponseModel> post(
+    String endpoint, {
+    Map<String, dynamic>? query,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onReceiveProgres,
+  }) async {
+    try {
+      final response = await _dio.post(
+        AppConfig.instance.env.baseUrl + endpoint,
+        queryParameters: query,
+        options: options,
+        cancelToken: cancelToken,
+        onReceiveProgress: onReceiveProgres,
+      );
+      if (response.statusCode == 200) {
+        return ResponseModel.fromMap(response.data);
+      }
+      return ResponseModel(
+          succeeded: false, data: null, error: "${response.statusCode}");
     } on Exception {
       rethrow;
     }

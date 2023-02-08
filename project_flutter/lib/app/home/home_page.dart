@@ -46,25 +46,29 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: const Center(child: Text('Go router')),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[300],
-              child: const Text('Sound of screams but the'),
+            InkWell(
+              onTap: () => context.go('/bloc-page'),
+              child: Container(
+                color: Colors.green[100],
+                padding: const EdgeInsets.all(8),
+                child: const Center(child: Text('Bloc 8.1.2')),
+              ),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[400],
-              child: const Text('Who scream'),
+            InkWell(
+              // onTap: () => context.go('/bloc-page'),
+              child: Container(
+                color: Colors.red[100],
+                padding: const EdgeInsets.all(8),
+                child: const Center(child: Text('Getx')),
+              ),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[500],
-              child: const Text('Revolution is coming...'),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[600],
-              child: const Text('Revolution, they...'),
+            InkWell(
+              // onTap: () => context.go('/bloc-page'),
+              child: Container(
+                color: Colors.amber[100],
+                padding: const EdgeInsets.all(8),
+                child: const Center(child: Text('Notification')),
+              ),
             ),
           ],
         ),
