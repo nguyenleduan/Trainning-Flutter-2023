@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({Key? key,this.value}) : super(key: key);
@@ -16,7 +17,13 @@ class _ShopPageState extends State<ShopPage> {
         title: const Text("Shop page"),
       ),
       body: Center(
-        child: Text('${widget.value}'),
+        child: ElevatedButton(
+          onPressed: () => context.goNamed(
+            "detail-product-page",
+            params: {"id_product": "101"},
+          ),
+          child: const Text("Detail product"),
+        ),
       ),
     );
   }

@@ -25,7 +25,7 @@ class _RouterPageState extends State<RouterPage> {
             return ListTile(
                title: Text(list[index].name) ,
               onTap: () {
-                return context.go(list[index].path);
+                return context.goNamed('${list[index].path}');
               },
             );
           }),),
