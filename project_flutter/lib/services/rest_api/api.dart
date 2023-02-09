@@ -69,21 +69,14 @@ class Api {
     }
   }
 
-  Future<ResponseModel> post(
+   Future<ResponseModel> post(
     String endpoint, {
     Map<String, dynamic>? query,
-    Options? options,
-    CancelToken? cancelToken,
-    ProgressCallback? onReceiveProgres,
   }) async {
     try {
       final response = await _dio.post(
-        AppConfig.instance.env.baseUrl + endpoint,
-        queryParameters: query,
-        options: options,
-        cancelToken: cancelToken,
-        onReceiveProgress: onReceiveProgres,
-      );
+          AppConfig.instance.env.baseUrl + endpoint,
+          data: query);
       if (response.statusCode == 200) {
         return ResponseModel.fromMap(response.data);
       }

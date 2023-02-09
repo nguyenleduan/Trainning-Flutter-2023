@@ -10,6 +10,5 @@ abstract class PageEvent extends Equatable{
 }
 
 class CallApi extends PageEvent {
-    final String? data;
-    const CallApi({this.data});
+
 }

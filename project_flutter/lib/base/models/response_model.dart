@@ -11,10 +11,10 @@ class ResponseModel extends Equatable {
   const ResponseModel._internal(this.succeeded, this.data, this.error);
 
   factory ResponseModel.fromMap(Map<String, dynamic> map) {
-    return ResponseModel._internal(
-      map['data'],
-      map['succeeded'],
-      map['error'],
+    return ResponseModel(
+      data : map['data'],
+      succeeded:  map['succeeded'],
+      error : map['error'],
     );
   }
 

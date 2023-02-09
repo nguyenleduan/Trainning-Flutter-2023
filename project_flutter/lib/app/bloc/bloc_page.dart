@@ -14,32 +14,32 @@ class _BlocPageState extends State<BlocPage> {
   String phone= '';
   @override
   void initState() {
-    PageBloc().add(const CallApi());
     super.initState();
+    // PageBloc().add( CallApi());
   }
   @override
   Widget build(BuildContext context) {
-    return  BlocProvider(
-      create: (context) => PageBloc(),
-      child: Scaffold(
-          appBar: AppBar(
-            title: const Text("Bloc Page"),
-          ),
-          body:  BlocBuilder<PageBloc,PageState>(
-            builder: (context, state) {
-              if(state is PageSucceeded){
-                return Text("$state");
-              }
-              if(state is PageInitial){
-                return const Center(child:  Text("PageInitial"));
-              }
-              if(state is PageLoading){
-                return const Center(child:  Text("PageLoading"));
-              }
-              return const Center(child:  Text("sdad"));
-            },
-          )
-      ),
+    return  Scaffold(
+        appBar: AppBar(
+          title: const Text("Bloc Page"),
+        ),
+        body:  BlocBuilder<PageBloc,PageState>(
+          builder: (context, state) {
+            if(state is PageSucceeded){
+              return Center(child: Text("${state.data}"));
+            }
+            if(state is PageError){
+              return const Center(child:  Text("PageError"));
+            }
+            if(state is PageInitial){
+              return const Center(child:  Text("PageInitial"));
+            }
+            if(state is PageLoading){
+              return const Center(child:  Text("PageLoading"));
+            }
+            return const Center(child:  Text("sdad"));
+          },
+        )
     );
   }
 }
